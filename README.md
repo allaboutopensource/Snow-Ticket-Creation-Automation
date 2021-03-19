@@ -7,4 +7,7 @@ This is the automation using the python language and the jenkins interation wher
 
 There are some pre populated field (the ID's) in the script which you can get from the snow API explorer as well or you can use the postman tool for the API reference. 
 
-You might need a service account in the service now portal which will be used to run this automation on the server side. 
+You need a service account in the servicenow portal which will be used to run this automation on the server side. 
+
+For jenkins pipeline to work, you need to add a snow-node (jenkins slave) and keep the python script over there. The py script should take the string parameter of the jenkins build as the argument and will execute the script.
+
