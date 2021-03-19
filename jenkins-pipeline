@@ -1,0 +1,26 @@
+pipeline {
+    agent {label "snow-node"}
+    stages{
+        stage('SNOW Ticket Creation') {
+            agent {label "snow-node"}
+            steps {
+                dir('/root/') {
+                    sh '''
+                    ./snow.py "$Snow"
+                    '''
+                }
+            }
+        }
+        
+    post {
+        success {
+            emailext subject: 'Incident Management for P1 ticket',
+                 body: 'Issue: there is an ticket in the queue', 
+                recipientProviders: [
+                            [$class: 'DevelopersRecipientProvider'],
+                            [$class: 'RequesterRecipientProvider']
+                        ], 
+                 to: '$Email'
+        }
+    }
+}
