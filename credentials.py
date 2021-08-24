@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-username: test
-password: test123
+snow_user: test
+snow_pwd: test123
